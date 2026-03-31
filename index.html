@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>God's City Kingdom Centre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8CB7A;
+      --gold-dim: #7A6030;
+      --deep: #0D0A05;
+      --dark: #15110A;
+      --dark-mid: #1E1810;
+      --dark-card: #221C12;
+      --cream: #F5EDD8;
+      --cream-dim: #C8BAA0;
+      --white: #FFF8EE;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(13,10,5,0.97), rgba(13,10,5,0));
+      transition: background 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(13,10,5,0.97);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 1.5px; background: var(--gold); display: block; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 60%),
+        linear-gradient(180deg, #0D0A05 0%, #1a1408 50%, #0D0A05 100%);
+    }
+    .hero-ornament {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10rem;
+      color: rgba(201,168,76,0.06);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .hero-cross {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      animation: fadeDown 1s ease both;
+      position: relative;
+    }
+    .hero-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      animation: fadeDown 1s 0.2s ease both;
+      position: relative;
+    }
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      animation: fadeDown 1s 0.35s ease both;
+      position: relative;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-church {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--cream-dim);
+      margin-bottom: 2.5rem;
+      animation: fadeDown 1s 0.5s ease both;
+      position: relative;
+    }
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto 2.5rem;
+      animation: fadeDown 1s 0.65s ease both;
+      position: relative;
+    }
+    .hero-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--cream-dim);
+      max-width: 520px;
+      line-height: 1.8;
+      animation: fadeDown 1s 0.8s ease both;
+      position: relative;
+    }
+    .hero-verse cite {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-style: normal;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-dim);
+      margin-top: 0.6rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; margin-top: 3rem;
+      animation: fadeDown 1s 0.95s ease both;
+      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-gold {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--deep);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: none;
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-gold:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn-outline {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeDown 1s 1.2s ease both;
+    }
+    .hero-scroll span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { position: relative; z-index: 1; }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .section-title strong { font-weight: 600; color: var(--gold-light); }
+    .gold-rule {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, var(--dark-mid), var(--dark-card));
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--gold-dim);
+    }
+    .about-img-placeholder .icon { font-size: 3rem; }
+    .about-img-placeholder p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .about-frame {
+      position: absolute;
+      top: -12px; left: -12px;
+      right: 12px; bottom: 12px;
+      border: 1px solid rgba(201,168,76,0.25);
+      pointer-events: none;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--cream-dim);
+      margin-bottom: 1.2rem;
+    }
+    .about-text p:first-of-type::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.1em;
+      margin-top: 0.1em;
+    }
+    .about-quote {
+      border-left: 2px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--deep);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--dark-card);
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover { background: #2a2010; }
+    .service-card:hover::before { opacity: 1; }
+    .service-day {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .service-time {
+      font-size: 1rem;
+      color: var(--cream-dim);
+      margin-bottom: 1rem;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--gold-dim);
+      line-height: 1.6;
+    }
+
+    .location-block {
+      margin-top: 4rem;
+      background: var(--dark-card);
+      border: 1px solid rgba(201,168,76,0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .location-info {
+      padding: 3rem;
+    }
+    .location-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .location-detail {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start;
+    }
+    .location-detail .icon {
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .location-detail div {
+      font-size: 0.95rem;
+      color: var(--cream-dim);
+      line-height: 1.6;
+    }
+    .location-detail div strong {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+      font-weight: 400;
+    }
+    .location-map {
+      background: var(--dark-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-dim);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-align: center;
+      min-height: 260px;
+    }
+
+    /* ── EVENTS ── */
+    #events { background: var(--dark); }
+    .events-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1px; }
+    .event-item {
+      background: var(--dark-card);
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 2.5rem;
+      transition: background 0.3s;
+      cursor: default;
+    }
+    .event-item:hover { background: #2a2010; }
+    .event-date {
+      text-align: center;
+    }
+    .event-date .day {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .event-date .month {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+    .event-info h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .event-info p { font-size: 0.9rem; color: var(--cream-dim); }
+    .event-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 0.35rem 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--deep); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info p {
+      font-size: 1rem;
+      color: var(--cream-dim);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+    .contact-detail {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail .icon { font-size: 1.1rem; color: var(--gold); margin-top: 0.1rem; }
+    .contact-detail div { font-size: 0.95rem; color: var(--cream-dim); line-height: 1.6; }
+    .contact-detail div strong {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--dark-card);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: var(--cream);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-cross { font-size: 1.5rem; color: var(--gold-dim); margin-bottom: 1rem; }
+    .footer-church {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── MOBILE MENU ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,10,5,0.98);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.8rem; right: 2rem;
+      font-size: 1.5rem;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .location-block { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .event-item { grid-template-columns: 70px 1fr; }
+      .event-tag { display: none; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .section-inner { padding: 4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">✦ God's City</a>
+    <ul class="nav-links">
+      <li><a href="#about">The Prophet</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Connect</a></li>
+    </ul>
+    <div class="hamburger" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+    <a href="#about" onclick="closeMenu()">The Prophet</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#events" onclick="closeMenu()">Events</a>
+    <a href="#contact" onclick="closeMenu()">Connect</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament">✦</div>
+    <div class="hero-cross">✝</div>
+    <p class="hero-subtitle">Welcome to</p>
+    <h1 class="hero-title">God's City<br/><span>Kingdom Centre</span></h1>
+    <p class="hero-church">Under the Ministry of Prophet Sicelo Dlamini</p>
+    <div class="hero-divider"></div>
+    <blockquote class="hero-verse">
+      "You are the light of the world.<br/>A city that is set on a hill cannot be hidden."
+      <cite>— Matthew 5:14</cite>
+    </blockquote>
+    <div class="hero-cta">
+      <a href="#services" class="btn-gold">Join Us Sunday</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-img-placeholder">
+            <div class="icon">✦</div>
+            <img src="prophet.jpg"></img>
+          </div>
+          <div class="about-frame"></div>
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">The Prophet</p>
+          <h2 class="section-title">Prophet<br/><strong>Sicelo Dlamini</strong></h2>
+          <div class="gold-rule"></div>
+          <p>
+            Prophet Sicelo Dlamini is a man called and ordained by God to bring transformation to generations and nations. His ministry is rooted in the prophetic, anchored in prayer, and driven by a deep love for people and the Kingdom of God.
+          </p>
+          <blockquote class="about-quote">
+            "The Kingdom of God is not a religion — it is a reality to be lived, demonstrated, and declared."
+          </blockquote>
+          <p>
+            As the founder of God's City Kingdom Centre, Prophet Dlamini leads with vision, boldness, and grace — raising up a people who carry the presence of God in every sphere of life. His heart is to see the church be the church — a city set on a hill.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label reveal">Be With Us</p>
+      <h2 class="section-title reveal">Service <strong>Times</strong></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <p class="service-day">Sunday</p>
+          <h3 class="service-name">Morning Worship</h3>
+          <p class="service-time">09:00 AM — 12:00 PM</p>
+          <p class="service-desc">Our main weekly gathering. Come with expectation — worship, Word, and the move of the Spirit.</p>
+        </div>
+        <div class="service-card reveal">
+          <p class="service-day">Wednesday</p>
+          <h3 class="service-name">Mid-Week Prayer</h3>
+          <p class="service-time">06:00 PM — 08:00 PM</p>
+          <p class="service-desc">A night of intercession and the Word. Come and be strengthened in the middle of your week.</p>
+        </div>
+        <div class="service-card reveal">
+          <p class="service-day">Friday</p>
+          <h3 class="service-name">Night of Glory</h3>
+          <p class="service-time">07:00 PM — 09:30 PM</p>
+          <p class="service-desc">An atmosphere of deep worship and prophetic ministry. End your week in His presence.</p>
+        </div>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="location-block reveal" style="margin-top:4rem;">
+        <div class="location-info">
+          <h3>Find Us</h3>
+          <div class="location-detail">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Address</strong>
+              God's City Kingdom Centre<br/>
+              [Your Street Address]<br/>
+              [City, Country]
+            </div>
+          </div>
+          <div class="location-detail">
+            <span class="icon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              +[Your Number]
+            </div>
+          </div>
+          <div class="location-detail">
+            <span class="icon">✉️</span>
+            <div>
+              <strong>Email</strong>
+              info@godscitykingdomcentre.org
+            </div>
+          </div>
+          <div style="margin-top:2rem;">
+            <a href="#contact" class="btn-gold" style="font-size:0.65rem;">Get Directions</a>
+          </div>
+        </div>
+        <div class="location-map">
+          <div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;">🗺</div>
+            <p>Map Coming Soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="section-inner">
+      <p class="section-label reveal">What's Coming</p>
+      <h2 class="section-title reveal">Upcoming <strong>Events</strong></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="events-list">
+        <div class="event-item reveal">
+          <div class="event-date">
+            <div class="day">13</div>
+            <div class="month">Apr</div>
+          </div>
+          <div class="event-info">
+            <h4>Prophetic Conference 2025</h4>
+            <p>A powerful gathering of prophetic voices. All are welcome.</p>
+          </div>
+          <div class="event-tag">Conference</div>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date">
+            <div class="day">20</div>
+            <div class="month">Apr</div>
+          </div>
+          <div class="event-info">
+            <h4>Easter Sunday Celebration</h4>
+            <p>Celebrate the resurrection of our Lord. Special service & ministration.</p>
+          </div>
+          <div class="event-tag">Special Service</div>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date">
+            <div class="day">03</div>
+            <div class="month">May</div>
+          </div>
+          <div class="event-info">
+            <h4>Kingdom Advancement Night</h4>
+            <p>An evening of deep intercession and prophetic declaration over the nation.</p>
+          </div>
+          <div class="event-tag">Prayer Night</div>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date">
+            <div class="day">17</div>
+            <div class="month">May</div>
+          </div>
+          <div class="event-info">
+            <h4>Youth & Young Adults Gathering</h4>
+            <p>A special meeting for the next generation. Come, bring a friend.</p>
+          </div>
+          <div class="event-tag">Youth</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Connect With Us</p>
+          <h2 class="section-title">We'd Love<br/><strong>to Hear From You</strong></h2>
+          <div class="gold-rule"></div>
+          <p>
+            Whether you're visiting for the first time, looking for prayer, or want to learn more about our ministry — we welcome you. Reach out and a member of our team will get back to you.
+          </p>
+          <div class="contact-detail">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Location</strong>
+              [Your Street Address], [City]
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="icon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              +[Your Number]
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="icon">✉️</span>
+            <div>
+              <strong>Email</strong>
+              info@godscitykingdomcentre.org
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="icon">🕐</span>
+            <div>
+              <strong>Office Hours</strong>
+              Mon – Fri: 9:00 AM – 4:00 PM
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Your first name" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Your last name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Reason for Contact</label>
+              <select>
+                <option value="" disabled selected>Select a reason</option>
+                <option>General Enquiry</option>
+                <option>Prayer Request</option>
+                <option>Visiting for the First Time</option>
+                <option>Partnership & Ministry</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="How can we help you?"></textarea>
+            </div>
+            <button class="btn-gold" style="border:none;cursor:pointer;width:100%;padding:1rem;font-size:0.7rem;">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-cross">✝</div>
+    <p class="footer-church">God's City Kingdom Centre</p>
+    <ul class="footer-links">
+      <li><a href="#about">The Prophet</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Connect</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 God's City Kingdom Centre · All rights reserved</p>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    function openMenu() { document.getElementById('mobileNav').classList.add('open'); }
+    function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Close mobile nav on outside click
+    document.getElementById('mobileNav').addEventListener('click', function(e) {
+      if (e.target === this) closeMenu();
+    });
+  </script>
+</body>
+</html>
