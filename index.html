@@ -108,15 +108,38 @@
     /* ── ABOUT ── */
     #about { background: var(--dark); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    /* Reverse layout for First Lady section */
+    .about-grid.reversed { direction: rtl; }
+    .about-grid.reversed > * { direction: ltr; }
     .about-img-wrap { position: relative; }
     .about-img-placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, var(--dark-mid), var(--dark-card)); border: 1px solid rgba(201,168,76,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--gold-dim); overflow: hidden; }
     .about-img-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .about-img-placeholder .icon { font-size: 3rem; }
     .about-img-placeholder p { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
     .about-frame { position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 1px solid rgba(201,168,76,0.25); pointer-events: none; }
+    /* Flipped frame for reversed layout */
+    .about-grid.reversed .about-frame { left: 12px; right: -12px; }
     .about-text p { font-size: 1.05rem; line-height: 1.9; color: var(--cream-dim); margin-bottom: 1.2rem; }
     .about-text p:first-of-type::first-letter { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 600; color: var(--gold); float: left; line-height: 0.8; margin-right: 0.1em; margin-top: 0.1em; }
     .about-quote { border-left: 2px solid var(--gold); padding: 1rem 1.5rem; margin: 2rem 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--cream); line-height: 1.7; }
+
+    /* ── FIRST LADY SEPARATOR ── */
+    .about-separator {
+      max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .about-separator-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent); }
+    .about-separator-ornament { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold-dim); }
+
+    /* Children block */
+    .children-block {
+      display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.12);
+    }
+    .children-icon { font-size: 1.2rem; color: var(--gold-dim); flex-shrink: 0; }
+    .children-text { font-size: 0.88rem; color: var(--cream-dim); line-height: 1.7; }
+    .children-text strong { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); display: block; margin-bottom: 0.2rem; font-weight: 400; }
 
     /* ── VISION ── */
     #vision { background: var(--deep); }
@@ -126,7 +149,6 @@
     }
     .vision-text {}
     .vision-text p { font-size: 1.05rem; line-height: 1.9; color: var(--cream-dim); margin-bottom: 1.2rem; }
-    /* ornamental right column */
     .vision-ornament {
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
     }
@@ -199,6 +221,33 @@
     .location-map iframe { width: 100%; height: 100%; min-height: 280px; border: none; filter: grayscale(30%) sepia(20%); }
     .map-overlay-link { position: absolute; bottom: 1rem; right: 1rem; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep); background: var(--gold); padding: 0.4rem 0.9rem; text-decoration: none; transition: opacity 0.3s; }
     .map-overlay-link:hover { opacity: 0.85; }
+
+    /* ── ONLINE RADIO ── */
+    .online-radio-block {
+      margin-top: 4rem; background: var(--dark-card); border: 1px solid rgba(201,168,76,0.2);
+      position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 2rem; padding: 2.5rem 3rem;
+    }
+    .online-radio-block::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(to right, var(--gold-light), var(--gold), transparent);
+    }
+    .online-radio-icon { font-size: 2.5rem; color: var(--gold-dim); position: absolute; right: 3rem; top: 50%; transform: translateY(-50%) scaleX(-1); opacity: 0.08; font-family: 'Cinzel', serif; }
+    .online-radio-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.7rem; }
+    .online-radio-label .dot { width: 6px; height: 6px; border-radius: 50%; background: #e05252; animation: livePulse 1.6s infinite; flex-shrink: 0; }
+    .online-radio-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.4rem; }
+    .online-radio-sub { font-size: 0.9rem; color: var(--cream-dim); line-height: 1.6; }
+    .online-radio-actions { display: flex; flex-direction: column; gap: 0.8rem; align-items: flex-end; flex-shrink: 0; }
+    .radio-listen-btn {
+      font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--deep); background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: none; padding: 0.8rem 1.8rem; cursor: pointer; text-decoration: none;
+      transition: opacity 0.3s, transform 0.2s; display: inline-flex; align-items: center; gap: 0.6rem;
+      opacity: 0.55; position: relative;
+    }
+    .radio-listen-btn::after { content: 'Coming Soon'; position: absolute; top: -1.5rem; right: 0; font-size: 0.48rem; letter-spacing: 0.12em; color: var(--gold-dim); text-transform: uppercase; font-family: 'Cinzel', serif; }
+    .radio-freq-badge { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--gold-light); text-align: right; }
 
     /* ── WORD CENTRES ── */
     #word-centres { background: var(--deep); }
@@ -283,6 +332,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid.reversed { direction: ltr; }
       .vision-inner { grid-template-columns: 1fr; gap: 3rem; }
       .weekly-days { grid-template-columns: 1fr; }
       .conferences-grid { grid-template-columns: 1fr 1fr; }
@@ -290,6 +340,8 @@
       .programs-grid { grid-template-columns: 1fr; }
       .location-block { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .online-radio-block { grid-template-columns: 1fr; gap: 1.5rem; }
+      .online-radio-actions { align-items: flex-start; }
     }
     @media (max-width: 600px) {
       .conferences-grid { grid-template-columns: 1fr 1fr; }
@@ -298,6 +350,7 @@
       .section-inner { padding: 4rem 1.2rem; }
       .vision-inner { padding: 4rem 1.2rem; }
       .weekly-strip { padding: 2rem 1.2rem; }
+      .online-radio-block { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -306,9 +359,9 @@
   <!-- RADIO BANNER -->
   <div class="radio-banner" id="radioBanner">
     <div class="radio-live-dot"></div>
-    <span class="radio-text">Broadcasting on</span>
-    <span class="radio-freq">Voice of the Church — 95 &amp; 97 MHz</span>
-    <span class="radio-text"><strong>God's City Kingdom Centre</strong></span>
+    <span class="radio-text">Listen to</span>
+    <span class="radio-freq">The Table of the Finishing Man</span>
+    <span class="radio-text">on <strong>Voice of God — 95 &amp; 97 MHz</strong></span>
     <button class="radio-close" onclick="document.getElementById('radioBanner').style.display='none'" title="Dismiss">✕</button>
   </div>
 
@@ -344,21 +397,16 @@
     <div class="hero-cross">✝</div>
     <p class="hero-subtitle">Welcome to</p>
     <h1 class="hero-title">God's City<br/><span>Kingdom Centre</span></h1>
-    <p class="hero-church">Under the Ministry of Prophet Sicelo Dlamini</p>
+    <p class="hero-church">Under the Ministry of Sicelo Dlamini</p>
 
-    <!-- COUPLE PHOTO — hidden on mobile -->
+    <!-- COUPLE PHOTO -->
     <div class="hero-couple">
       <div class="hero-couple-frame">
-        <img src="pSandW.png" alt="Prophet &amp; First Lady Dlamini" class="hero-couple-photo" />
-        <!-- Placeholder (remove when photo is available):
-        <div class="hero-couple-placeholder">
-          <span class="ph-icon">✝</span>
-          <span>Prophet &amp; First Lady<br/>Photo</span>
-        </div> -->
+        <img src="pSandW.png" alt="Sicelo &amp; Nozipho Dlamini" class="hero-couple-photo" />
       </div>
       <div class="hero-couple-label">
-        <span class="cl-role">Senior Prophet &amp; First Lady</span>
-        <span class="cl-names">Prophet Sicelo &amp; Nozipho Dlamini</span>
+        <span class="cl-role">Senior Leaders</span>
+        <span class="cl-names">Sicelo &amp; Nozipho Dlamini</span>
       </div>
     </div>
 
@@ -374,28 +422,59 @@
     <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
   </section>
 
-  <!-- ABOUT — The Prophet -->
+  <!-- ABOUT — Sicelo Dlamini -->
   <section id="about">
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-img-wrap reveal">
           <div class="about-img-placeholder">
-            <img src="5.jpg" alt="Prophet Sicelo Dlamini" />
-            <!-- Placeholder (remove when photo is available):
-            <div class="icon">✦</div>
-            <p>Photo of the Prophet</p> -->
+            <img src="5.jpg" alt="Sicelo Dlamini" />
           </div>
           <div class="about-frame"></div>
         </div>
         <div class="about-text reveal">
           <p class="section-label">The Prophet</p>
-          <h2 class="section-title">Prophet<br/><strong>Sicelo Dlamini</strong></h2>
+          <h2 class="section-title"><strong>Sicelo Dlamini</strong></h2>
           <div class="gold-rule"></div>
-          <p>Prophet Sicelo Dlamini is a sought-after prophetic voice among the younger generation as well as seasoned believers and ministers. He is widely recognized for his deep revelation knowledge, biblically sound doctrine, and profound teaching ministry. His message strongly emphasizes godly integrity and spiritual maturity.</p>
+          <p>Sicelo Dlamini is a sought-after prophetic voice among the younger generation as well as seasoned believers and ministers. He is widely recognized for his deep revelation knowledge, biblically sound doctrine, and profound teaching ministry. His message strongly emphasizes godly integrity and spiritual maturity.</p>
           <blockquote class="about-quote">"The Kingdom of God is not a religion — it is a reality to be lived, demonstrated, and declared."</blockquote>
           <p>His heart and divine assignment are to see the Body of Christ grow into the fullness of Christ, with a particular passion for the restoration of integrity within the prophetic ministry.</p>
         </div>
       </div>
+
+      <!-- SEPARATOR -->
+      <div class="about-separator" style="margin: 5rem 0 5rem;">
+        <div class="about-separator-line"></div>
+        <div class="about-separator-ornament">✦</div>
+        <div class="about-separator-line"></div>
+      </div>
+
+      <!-- NOZIPHO DLAMINI — reversed layout -->
+      <div class="about-grid reversed">
+        <div class="about-img-wrap reveal">
+          <div class="about-img-placeholder">
+            <!-- Placeholder until photo is supplied -->
+            <img src="firstlady.jpeg">
+          </div>
+          <div class="about-frame"></div>
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">First Lady</p>
+          <h2 class="section-title"><strong>Nozipho Dlamini</strong></h2>
+          <div class="gold-rule"></div>
+          <p>Nozipho Dlamini is a prophet in the marketplace — a woman whose assignment extends far beyond the walls of the church into every sphere of society. She stands as a co-leader of God's City Kingdom Centre, walking alongside Sicelo Dlamini in vision, faith, and purpose.</p>
+          <blockquote class="about-quote">"A woman of steadfast grace, she does not merely support the vision — she carries it."</blockquote>
+          <p>As a mother, a wife, and a leader, Nozipho models the path of a woman who walks in both strength and grace. Her life is a living testimony to what God can do through a surrendered heart. She continues to inspire women across this generation to step boldly into their God-given identity and calling.</p>
+          <div class="children-block">
+            <span class="children-icon">✝</span>
+            <div class="children-text">
+              <strong>Blessed With Three Children</strong>
+              Sikhuselo, Buhlebayo &amp; Hlokoma
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -406,7 +485,7 @@
         <p class="section-label">The Vision</p>
         <h2 class="section-title">Pastor &amp; <strong>Visionary</strong></h2>
         <div class="gold-rule"></div>
-        <p>Prophet Sicelo Dlamini serves as the pastor and visionary of God's City Kingdom Centre — a growing ministry that has expanded into multiple campuses known as Word Centres across Eswatini.</p>
+        <p>Sicelo Dlamini serves as the pastor and visionary of God's City Kingdom Centre — a growing ministry that has expanded into multiple campuses known as Word Centres across Eswatini.</p>
         <p>Through visionary leadership and sound doctrine, the ministry continues to impact lives and equip believers toward spiritual maturity and kingdom effectiveness. His leadership raises up a people who carry the presence of God in every sphere of life.</p>
         <p>His heart is to see the church be the church — a city set on a hill, shining as a beacon of truth, transformation, and the glory of God to all nations.</p>
       </div>
@@ -534,6 +613,25 @@
           <a href="https://maps.google.com/?q=-26.223152,31.007147" target="_blank" rel="noopener" class="map-overlay-link">Open in Maps ↗</a>
         </div>
       </div>
+
+      <!-- ONLINE RADIO PLACEHOLDER -->
+      <div class="online-radio-block reveal">
+        <div>
+          <div class="online-radio-label">
+            <span class="dot"></span>
+            Online Radio · Coming Soon
+          </div>
+          <div class="online-radio-name">The Table of the Finishing Man</div>
+          <div class="online-radio-sub">Stream our radio program live and on demand — wherever you are in the world. Available soon on our online radio platform.</div>
+        </div>
+        <div class="online-radio-actions">
+          <a href="https://maps.google.com/?q=-26.223152,31.007147" target="_blank" class="radio-listen-btn" onclick="return false;" title="Online radio link coming soon">
+            ▶ &nbsp;Listen Online
+          </a>
+          <span class="radio-freq-badge">Voice of God &nbsp;·&nbsp; 95 &amp; 97 MHz</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -566,7 +664,7 @@
         </div>
         <div class="centre-card reveal">
           <p class="centre-location">Macetjeni</p>
-          <div class="centre-name">Sibusiso<em>Word Centre</em></div>
+          <div class="centre-name">Esibusisweni<em>Word Centre</em></div>
           <p class="centre-time">Sunday 10:30 AM</p>
         </div>
         <div class="centre-card reveal">
@@ -592,7 +690,7 @@
         <div class="gold-rule"></div>
         <span class="network-subtitle">The Table of the Finishing Man</span>
         <ul class="network-points">
-          <li>A growing ministry network that covers and connects churches under the apostolic covering of Prophet Sicelo Dlamini</li>
+          <li>A growing ministry network that covers and connects churches under the apostolic covering of Sicelo Dlamini</li>
           <li>Provides spiritual alignment, accountability, and prophetic direction to affiliated churches and leaders</li>
           <li>Each church remains autonomous yet united in vision, doctrine, and Kingdom purpose</li>
         </ul>
@@ -611,12 +709,12 @@
         <div class="program-card reveal">
           <p class="program-number">01</p>
           <h3 class="program-name">Radio Ministry</h3>
-          <span class="program-subtitle">Voice of the Church</span>
+          <span class="program-subtitle">The Table of the Finishing Man</span>
           <div class="program-divider"></div>
           <ul class="program-points">
-            <li>A weekly radio program aired on a local Christian radio station</li>
+            <li>A weekly radio program aired on Voice of God — the local Christian radio station</li>
             <li>Focused on teaching, spiritual insight, and equipping believers for maturity and kingdom living</li>
-            <li>Broadcasting on Voice of the Church — 95 &amp; 97 MHz</li>
+            <li>Broadcasting on Voice of God — 95, 97 &amp; 101 MHz</li>
           </ul>
         </div>
         <div class="program-card reveal">
