@@ -246,7 +246,7 @@
       transition: opacity 0.3s, transform 0.2s; display: inline-flex; align-items: center; gap: 0.6rem;
       opacity: 0.55; position: relative;
     }
-    .radio-listen-btn::after { content: 'Coming Soon'; position: absolute; top: -1.5rem; right: 0; font-size: 0.48rem; letter-spacing: 0.12em; color: var(--gold-dim); text-transform: uppercase; font-family: 'Cinzel', serif; }
+    .radio-listen-btn::after { content: 'Live'; position: absolute; top: -1.5rem; right: 0; font-size: 0.48rem; letter-spacing: 0.12em; color: var(--gold-dim); text-transform: uppercase; font-family: 'Cinzel', serif; }
     .radio-freq-badge { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--gold-light); text-align: right; }
 
     /* ── WORD CENTRES ── */
@@ -361,7 +361,7 @@
     <div class="radio-live-dot"></div>
     <span class="radio-text">Listen to</span>
     <span class="radio-freq">The Table of the Finishing Man</span>
-    <span class="radio-text">on <strong>Voice of God — 95 &amp; 97 MHz</strong></span>
+    <span class="radio-text">on <strong>Voice of God — 95, 97 &amp; 101 MHz</strong></span>
     <button class="radio-close" onclick="document.getElementById('radioBanner').style.display='none'" title="Dismiss">✕</button>
   </div>
 
@@ -397,7 +397,7 @@
     <div class="hero-cross">✝</div>
     <p class="hero-subtitle">Welcome to</p>
     <h1 class="hero-title">God's City<br/><span>Kingdom Centre</span></h1>
-    <p class="hero-church">Under the Ministry of Sicelo Dlamini</p>
+    <p class="hero-church">A people known for their God</p>
 
     <!-- COUPLE PHOTO -->
     <div class="hero-couple">
@@ -614,23 +614,22 @@
         </div>
       </div>
 
-      <!-- ONLINE RADIO PLACEHOLDER -->
-      <div class="online-radio-block reveal">
-        <div>
-          <div class="online-radio-label">
-            <span class="dot"></span>
-            Online Radio · Coming Soon
-          </div>
-          <div class="online-radio-name">The Table of the Finishing Man</div>
-          <div class="online-radio-sub">Stream our radio program live and on demand — wherever you are in the world. Available soon on our online radio platform.</div>
+    <!-- ONLINE RADIO -->
+    <div class="online-radio-block reveal">
+      <div>
+        <div class="online-radio-label">
+          <span class="dot"></span>
+          Live Online Radio
         </div>
-        <div class="online-radio-actions">
-          <a href="https://maps.google.com/?q=-26.223152,31.007147" target="_blank" class="radio-listen-btn" onclick="return false;" title="Online radio link coming soon">
-            ▶ &nbsp;Listen Online
-          </a>
-          <span class="radio-freq-badge">Voice of God &nbsp;·&nbsp; 95 &amp; 97 MHz</span>
-        </div>
+        <div class="online-radio-name">Grace Portal</div>
+        <div class="online-radio-sub">Stream live and on demand — wherever you are in the world. Tune in now.</div>
       </div>
+      <div class="online-radio-actions">
+        <a href="https://zeno.fm/radio/grace-portal-fm/" target="_blank" rel="noopener noreferrer" class="radio-listen-btn" style="opacity:1;" title="Listen on Grace Portal FM">
+          ▶ &nbsp;Listen Online
+        </a>
+      </div>
+    </div>
 
     </div>
   </section>
