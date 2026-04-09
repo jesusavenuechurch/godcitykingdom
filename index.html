@@ -29,12 +29,24 @@
       transition: background 0.4s;
     }
     nav.scrolled { background: rgba(13,10,5,0.97); border-bottom: 1px solid rgba(201,168,76,0.15); }
-    .nav-logo { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; }
+    .nav-logo img { height: 40px;width: auto;}
+    .nav-logo { 
+  font-family: 'Cinzel', serif; 
+  font-size: 0.9rem; 
+  color: var(--gold); 
+  letter-spacing: 0.15em; 
+  text-decoration: none; 
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
     .nav-links a { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; transition: color 0.3s; }
     .nav-links a:hover { color: var(--gold); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { width: 24px; height: 1.5px; background: var(--gold); display: block; }
+
 
     /* ── RADIO BANNER ── */
     .radio-banner {
@@ -367,7 +379,7 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#hero" class="nav-logo">✦ God's City</a>
+    <a href="#hero" class="nav-logo"><img src="logo.png" alt="God's City Kingdom Centre" /> God's City</a>
     <ul class="nav-links">
       <li><a href="#about">The Prophet</a></li>
       <li><a href="#services">Services</a></li>
