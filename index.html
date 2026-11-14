@@ -69,27 +69,32 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 .drawer.open{opacity:1;visibility:visible}
 .drawer a.link{font-family:Fraunces,serif;font-size:2rem;padding:.35rem 0;transform:translateY(16px);opacity:0;transition:transform .5s,opacity .5s}
 .drawer.open a.link{transform:none;opacity:1}
-.drawer.open a.link:nth-child(2){transition-delay:.05s}.drawer.open a.link:nth-child(3){transition-delay:.1s}.drawer.open a.link:nth-child(4){transition-delay:.15s}.drawer.open a.link:nth-child(5){transition-delay:.2s}.drawer.open a.link:nth-child(6){transition-delay:.25s}
+.drawer.open a.link:nth-child(2){transition-delay:.05s}.drawer.open a.link:nth-child(3){transition-delay:.1s}.drawer.open a.link:nth-child(4){transition-delay:.15s}.drawer.open a.link:nth-child(5){transition-delay:.2s}.drawer.open a.link:nth-child(6){transition-delay:.25s}.drawer.open a.link:nth-child(7){transition-delay:.3s}
 .drawer .close{position:absolute;top:18px;right:18px;background:none;border:0;color:#fff;cursor:pointer;padding:8px}
 .drawer .close svg{width:30px;height:30px}
 .drawer .btn{margin-top:1.6rem;align-self:flex-start}
 
 /* ── hero ── */
-.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:150px 0 170px}
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;text-align:center;color:#fff;overflow:hidden;padding:150px 0 170px}
 .hero-bg{position:absolute;inset:0;background:url(images/worship.jpg) center 40%/cover no-repeat;animation:kenburns 24s ease-out forwards;transform-origin:60% 40%}
 @keyframes kenburns{from{transform:scale(1.18)}to{transform:scale(1.02)}}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,22,63,.55) 0%,rgba(23,22,63,.25) 35%,rgba(23,22,63,.82) 78%,rgba(23,22,63,.95) 100%)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 48%,rgba(23,22,63,.62),rgba(23,22,63,.82) 70%),linear-gradient(180deg,rgba(23,22,63,.5),rgba(23,22,63,.25) 40%,rgba(23,22,63,.95))}
 .hero .wrap{position:relative;z-index:1;width:100%}
 .hero .kick{font-size:.8rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
-.hero h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.9rem,8vw,6.4rem);line-height:.98;letter-spacing:-.025em;margin:1rem 0 1.4rem;max-width:12ch}
+.hero h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.9rem,8vw,6.4rem);line-height:.98;letter-spacing:-.025em;margin:1rem auto 1.4rem;max-width:13ch}
 .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
 .hero h1 .w span{display:inline-block;transform:translateY(105%);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
 .hero h1 em{font-style:italic;color:var(--gold-soft)}
 @keyframes up{to{transform:none}}
-.hero p{font-size:clamp(1.05rem,1.6vw,1.22rem);max-width:34rem;color:rgba(255,255,255,.88)}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:2rem}
-.in-1,.in-2,.in-3{opacity:0;transform:translateY(20px);animation:fade .9s cubic-bezier(.2,.8,.2,1) forwards}
-.in-1{animation-delay:.1s}.in-2{animation-delay:.75s}.in-3{animation-delay:.9s}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.22rem);max-width:36rem;margin:0 auto;color:rgba(255,255,255,.88)}
+.hero .crest{width:84px;height:auto;margin:0 auto 1.3rem;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));opacity:0;animation:crest 1.2s cubic-bezier(.2,.8,.2,1) .05s forwards}
+@keyframes crest{from{opacity:0;transform:translateY(-14px) scale(.9)}to{opacity:1;transform:none}}
+.hero .verse{margin-top:2.4rem;font-family:Fraunces,serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.7)}
+.hero .verse cite{display:block;font-family:Manrope,sans-serif;font-style:normal;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-top:.4rem}
+@media (max-width:600px){.hero .crest{width:66px}}
+.hero .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:2rem}
+.in-1,.in-2,.in-3,.in-4{opacity:0;transform:translateY(20px);animation:fade .9s cubic-bezier(.2,.8,.2,1) forwards}
+.in-1{animation-delay:.25s}.in-2{animation-delay:.85s}.in-3{animation-delay:1s}.in-4{animation-delay:1.2s}
 @keyframes fade{to{opacity:1;transform:none}}
 
 .times{position:relative;z-index:3;margin-top:-90px}
@@ -110,6 +115,28 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 .marquee span::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--gold)}
 .marquee span:nth-child(even){color:transparent;-webkit-text-stroke:1.2px var(--indigo)}
 @keyframes slide{to{transform:translateX(-50%)}}
+
+/* ── who we are ── */
+.vision{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+@media (max-width:900px){.vision{grid-template-columns:1fr;gap:44px}}
+.vision .verse-top{font-family:Fraunces,serif;font-style:italic;color:var(--muted);font-size:1.05rem;margin-top:-.2rem}
+.vision .verse-top cite{font-family:Manrope,sans-serif;font-style:normal;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-left:.4rem;white-space:nowrap}
+.vision p.body{color:var(--muted);font-size:1.04rem;margin-top:1.1rem;max-width:38rem}
+.vision p.body strong{color:var(--ink)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2rem}
+@media (max-width:600px){.pillars{grid-template-columns:1fr}}
+.pillar{background:var(--white);border-radius:20px;padding:20px;box-shadow:var(--shadow);border-top:3px solid var(--gold);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.pillar:hover{transform:translateY(-5px)}
+.pillar b{display:block;font-family:Fraunces,serif;font-size:1.08rem;font-weight:600;line-height:1.25;margin-bottom:.35rem}
+.pillar span{font-size:.9rem;color:var(--muted);line-height:1.5;display:block}
+.zion{position:relative;background:var(--indigo);color:#fff;border-radius:var(--radius);padding:52px 44px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(23,22,63,.7)}
+.zion::before{content:"\201C";position:absolute;top:-40px;left:20px;font-family:Fraunces,serif;font-size:14rem;line-height:1;color:rgba(201,150,43,.22)}
+.zion .halo{position:absolute;right:-90px;bottom:-90px;width:260px;height:260px;border-radius:50%;border:2px solid rgba(201,150,43,.35);animation:halo 9s ease-in-out infinite}
+.zion .halo::after{content:"";position:absolute;inset:30px;border-radius:50%;border:2px solid rgba(201,150,43,.2)}
+@keyframes halo{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.12);opacity:1}}
+.zion p{position:relative;font-family:Fraunces,serif;font-size:clamp(1.35rem,2.4vw,1.75rem);line-height:1.4;font-weight:500}
+.zion cite{position:relative;display:block;margin-top:1.4rem;font-style:normal;font-size:.76rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft)}
+@media (max-width:600px){.zion{padding:40px 28px}}
 
 /* ── Sunday ── */
 .sunday{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
@@ -141,7 +168,7 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 .portrait img{width:100%}
 .portrait::before{content:"";position:absolute;inset:-16px -16px 30px 30px;border:2px solid var(--gold);border-radius:240px 240px var(--radius) var(--radius);z-index:-0;opacity:.5}
 .portrait .frame{position:relative;z-index:1}
-.people{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:2rem}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:2rem;align-items:start}
 @media (max-width:600px){.people{grid-template-columns:1fr}}
 .person{background:var(--white);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
 .person .who{display:flex;gap:12px;align-items:center;margin-bottom:.8rem}
@@ -274,7 +301,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
-  .hero h1 .w span,.in-1,.in-2,.in-3{transform:none;opacity:1}
+  .hero h1 .w span,.in-1,.in-2,.in-3,.in-4,.hero .crest{transform:none;opacity:1}
   .js .rv{opacity:1;transform:none}
   .year .fill{width:100%}
 }
@@ -289,6 +316,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
   <div class="wrap">
     <a href="#top" class="brand"><img src="images/logo.png" alt="" width="168" height="220"><span>God's City<small>Kingdom Centre</small></span></a>
     <ul>
+      <li><a href="#vision">Who we are</a></li>
       <li><a href="#sunday">Sundays</a></li>
       <li><a href="#leaders">Our leaders</a></li>
       <li><a href="#year">Conferences</a></li>
@@ -302,6 +330,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
 
 <div class="drawer" id="drawer" aria-hidden="true">
   <button class="close" id="closeMenu" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a class="link" href="#vision">Who we are</a>
   <a class="link" href="#sunday">Sundays</a>
   <a class="link" href="#leaders">Our leaders</a>
   <a class="link" href="#year">Conferences</a>
@@ -313,6 +342,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
 <section class="hero" id="top">
   <div class="hero-bg" role="img" aria-label="The congregation of God's City Kingdom Centre in worship"></div>
   <div class="wrap">
+    <img class="crest" src="images/logo.png" alt="" width="168" height="220">
     <div class="kick in-1">God's City Kingdom Centre · Ngwenya, Eswatini</div>
     <h1><span class="w"><span>A</span></span> <span class="w"><span style="animation-delay:.08s">people</span></span> <span class="w"><span style="animation-delay:.16s">known</span></span> <span class="w"><span style="animation-delay:.24s">for</span></span> <span class="w"><span style="animation-delay:.32s">their</span></span> <span class="w"><span style="animation-delay:.4s"><em>God.</em></span></span></h1>
     <p class="in-2">Join us this Sunday at 10:30, at our main church in Ngwenya or at one of six Word Centres across Eswatini. Come as you are.</p>
@@ -322,6 +352,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
       <a class="btn btn-glass" href="https://zeno.fm/radio/grace-portal-fm/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Listen live</a>
     </div>
+    <div class="verse in-4">"You are the light of the world. A city that is set on a hill cannot be hidden."<cite>Matthew 5:14</cite></div>
   </div>
 </section>
 
@@ -341,6 +372,28 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
     <span>Worship</span><span>The Word</span><span>Prayer</span><span>The Prophetic</span><span>Family</span><span>Kingdom living</span>
   </div>
 </div>
+
+<section id="vision">
+  <div class="wrap vision">
+    <div class="rv l">
+      <span class="label">Who we are</span>
+      <h2>A city set on a hill</h2>
+      <p class="body">God's City Kingdom Centre is led by <strong>Prophet Sicelo and Nozipho Dlamini</strong>. From our main church in Ngwenya, the ministry has grown into <strong>six Word Centres</strong> across Eswatini.</p>
+      <p class="body">Our vision is for the church to be the church: people who carry God's presence into every part of life, grow to maturity in Christ, and shine like a city on a hill, a light of truth and transformation to the nations.</p>
+      <div class="pillars">
+        <div class="pillar rv" data-d="1"><b>Rooted in the Word</b><span>Sound doctrine and teaching you can live by.</span></div>
+        <div class="pillar rv" data-d="2"><b>Growing to maturity</b><span>Equipping believers for life and for the Kingdom.</span></div>
+        <div class="pillar rv" data-d="3"><b>Carrying His presence</b><span>Into homes, work and every sphere of society.</span></div>
+      </div>
+    </div>
+    <div class="rv r">
+      <div class="zion"><span class="halo"></span>
+        <p>For Zion's sake I will not hold my peace, and for Jerusalem's sake I will not rest, until her righteousness goes forth as brightness.</p>
+        <cite>Isaiah 62:1</cite>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="sunday">
   <div class="wrap sunday">
@@ -372,14 +425,14 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
       <div class="people">
         <div class="person rv" data-d="1">
           <div class="who"><img src="images/prophet.jpg" alt="" width="600" height="858" loading="lazy"><div><small>The Prophet</small><b>Sicelo Dlamini</b></div></div>
-          <p>Pastor and visionary of God's City. He is known for sound teaching from the Bible, with an emphasis on integrity and spiritual maturity, and has a real passion for integrity in prophetic ministry.</p>
+          <p>Pastor and visionary of God's City, and a prophetic voice trusted by young people and seasoned ministers alike. He is known for deep revelation, sound doctrine and strong teaching, with an emphasis on integrity and spiritual maturity. His heart is to see the Body of Christ grow into the fullness of Christ, and to see integrity restored in prophetic ministry.</p>
         </div>
         <div class="person rv" data-d="2">
           <div class="who"><img src="images/firstlady.jpg" alt="" width="600" height="777" loading="lazy"><div><small>First Lady</small><b>Nozipho Dlamini</b></div></div>
-          <p>Co-leader of the church and a prophet in the marketplace. She takes faith into business and everyday life, and encourages women to step into their calling.</p>
+          <p>Co-leader of God's City, walking alongside her husband in vision, faith and purpose. A prophet in the marketplace, her calling reaches beyond the church into every sphere of society. As a mother, wife and leader, she inspires women to step boldly into their God-given identity and calling.</p>
         </div>
       </div>
-      <blockquote>"You are the light of the world. A city that is set on a hill cannot be hidden."<cite>Matthew 5:14</cite></blockquote>
+      <blockquote>"The Kingdom of God is not a religion. It is a reality to be lived, demonstrated and declared."<cite>Prophet Sicelo Dlamini</cite></blockquote>
     </div>
   </div>
 </section>
@@ -525,7 +578,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
   <div class="wrap">
     <div class="top">
       <a href="#top" class="brand"><img src="images/logo.png" alt="" width="168" height="220"><span>God's City<small>Kingdom Centre</small></span></a>
-      <nav><a href="#sunday">Sundays</a><a href="#leaders">Our leaders</a><a href="#year">Conferences</a><a href="#centres">Word Centres</a><a href="#ministries">Ministries</a><a href="#visit">Visit</a></nav>
+      <nav><a href="#vision">Who we are</a><a href="#sunday">Sundays</a><a href="#leaders">Our leaders</a><a href="#year">Conferences</a><a href="#centres">Word Centres</a><a href="#ministries">Ministries</a><a href="#visit">Visit</a></nav>
     </div>
     <div class="bottom"><span>© 2026 God's City Kingdom Centre, Ngwenya, Eswatini</span><span>A people known for their God</span></div>
   </div>
