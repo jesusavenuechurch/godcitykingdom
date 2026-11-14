@@ -35,7 +35,7 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 
 .btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:800;font-size:.95rem;padding:.95rem 1.5rem;border-radius:999px;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,color .25s;cursor:pointer;border:0;font-family:inherit}
 .btn svg{width:18px;height:18px;flex:none}
-.btn-gold{background:var(--gold);color:#fff;box-shadow:0 12px 30px -10px rgba(201,150,43,.8)}
+.btn-gold{background:var(--gold);color:var(--indigo-deep);box-shadow:0 12px 30px -10px rgba(201,150,43,.8)}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 36px -10px rgba(201,150,43,.9)}
 .btn-glass{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .btn-glass:hover{background:rgba(255,255,255,.24);transform:translateY(-2px)}
@@ -47,6 +47,8 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 /* ── radio bar + nav ── */
 .radio{background:var(--indigo-deep);color:#E9E6FF;font-size:.82rem;text-align:center;padding:.55rem 16px;position:relative;z-index:60}
 .radio b{color:#fff}
+.radio a{color:var(--gold-soft);font-weight:700;white-space:nowrap;border-bottom:1px solid transparent;transition:border-color .2s}
+.radio a:hover{border-color:var(--gold-soft)}
 .radio .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#FF5A5A;margin-right:.5rem;vertical-align:middle;animation:live 1.6s infinite}
 @keyframes live{0%{box-shadow:0 0 0 0 rgba(255,90,90,.6)}80%{box-shadow:0 0 0 9px rgba(255,90,90,0)}100%{box-shadow:0 0 0 0 rgba(255,90,90,0)}}
 .nav{position:sticky;top:0;z-index:50;transition:background .35s,box-shadow .35s;margin-bottom:-78px}
@@ -76,7 +78,7 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 
 /* ── hero ── */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;text-align:center;color:#fff;overflow:hidden;padding:150px 0 170px}
-.hero-bg{position:absolute;inset:0;background:url(images/worship.jpg) center 40%/cover no-repeat;animation:kenburns 24s ease-out forwards;transform-origin:60% 40%}
+.hero-bg{position:absolute;inset:0;background:url(images/worship.jpg) center 78%/cover no-repeat;animation:kenburns 24s ease-out forwards;transform-origin:60% 40%}
 @keyframes kenburns{from{transform:scale(1.18)}to{transform:scale(1.02)}}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 48%,rgba(23,22,63,.62),rgba(23,22,63,.82) 70%),linear-gradient(180deg,rgba(23,22,63,.5),rgba(23,22,63,.25) 40%,rgba(23,22,63,.95))}
 .hero .wrap{position:relative;z-index:1;width:100%}
@@ -157,7 +159,7 @@ h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.1rem,4.4
 .point b{font-family:Fraunces,serif;font-size:1.15rem;font-weight:600;display:block}
 .point p{color:var(--muted);font-size:.97rem}
 .point .n{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-weight:800;flex:none;transition:background .3s,color .3s}
-.point:hover .n{background:var(--gold);color:#fff}
+.point:hover .n{background:var(--gold);color:var(--indigo-deep)}
 
 /* ── leaders ── */
 .leaders{background:var(--sand);position:relative;overflow:hidden}
@@ -215,7 +217,7 @@ blockquote cite{display:block;font-family:Manrope,sans-serif;font-style:normal;f
 .serve .photo:hover{transform:rotate(0) scale(1.01)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:1.6rem 0 2rem}
 .chips span{background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:.5rem 1rem;font-weight:700;font-size:.9rem;transition:border-color .25s,background .25s,color .25s}
-.chips span:hover{border-color:var(--gold);background:var(--gold);color:#fff}
+.chips span:hover{border-color:var(--gold);background:var(--gold);color:var(--indigo-deep)}
 
 /* ── centres ── */
 .centres{background:var(--indigo-deep);color:#fff;position:relative;overflow:hidden}
@@ -230,7 +232,14 @@ blockquote cite{display:block;font-family:Manrope,sans-serif;font-style:normal;f
 .centre .pin svg{width:20px;height:20px}
 .centre b{display:block;font-family:Fraunces,serif;font-size:1.35rem;font-weight:600;line-height:1.2}
 .centre span{display:block;color:rgba(255,255,255,.72);font-size:.92rem}
-.centre small{display:inline-block;margin-top:.9rem;font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft)}
+.centre{display:block}
+.centre .go{display:flex;align-items:center;gap:.35rem;margin-top:.7rem;font-style:normal;font-size:.84rem;font-weight:700;color:#fff;opacity:.75;transition:opacity .25s,gap .25s}
+.centre .go svg{width:14px;height:14px}
+.centre:hover .go{opacity:1;gap:.6rem}
+.centre.main .go{color:var(--indigo-deep)}
+.centre:hover .pin{animation:pinbounce .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pinbounce{0%{transform:translateY(0)}40%{transform:translateY(-7px)}100%{transform:translateY(0)}}
+.centre small{display:block;margin-top:.9rem;font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft)}
 .centre.main{background:var(--gold);border-color:var(--gold);color:var(--indigo-deep)}
 .centre.main span,.centre.main small{color:var(--indigo-deep)}
 .centre.main .pin{background:rgba(23,22,63,.15);color:var(--indigo-deep)}
@@ -270,7 +279,11 @@ blockquote cite{display:block;font-family:Manrope,sans-serif;font-style:normal;f
 .row .ic svg{width:22px;height:22px}
 .row small{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .row a:hover{color:var(--gold)}
-.map{height:260px;border:0;width:100%;display:block;filter:saturate(.9)}
+.mapbox{position:relative;height:260px;background:linear-gradient(135deg,#E9E4F5,#F4E6C4)}
+.mapbox .fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--indigo);font-weight:700;padding:20px}
+.mapbox .fallback svg{width:34px;height:34px;color:var(--gold);margin:0 auto .4rem}
+.mapbox .fallback a{text-decoration:underline}
+.map{position:relative;height:260px;border:0;width:100%;display:block;filter:saturate(.9)}
 .info .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 form.panel{padding:34px}
 form h3{font-family:Fraunces,serif;font-size:1.6rem;font-weight:600;margin-bottom:.3rem}
@@ -282,6 +295,16 @@ input,select,textarea{display:block;width:100%;margin-top:6px;font:inherit;font-
 input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,150,43,.15)}
 textarea{min-height:120px;resize:vertical}
 form .btn{width:100%;justify-content:center;margin-top:6px}
+.hint{font-size:.8rem;color:var(--muted);margin:-6px 0 14px}
+.hint.bad{color:#B42318;font-weight:700}
+label.check{display:flex;gap:.7rem;align-items:flex-start;font-weight:600;font-size:.92rem;background:var(--gold-soft);border-radius:14px;padding:.85rem 1rem;cursor:pointer}
+label.check input{width:20px;height:20px;margin:1px 0 0;flex:none;accent-color:var(--indigo)}
+.sent{display:none;text-align:center;padding:30px 10px}
+.sent.on{display:block;animation:fade .6s ease forwards}
+.sent .tick{width:64px;height:64px;border-radius:50%;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;margin:0 auto 1rem}
+.sent .tick svg{width:32px;height:32px}
+.sent h3{margin-bottom:.4rem}
+.sent p{color:var(--muted)}
 .note{font-size:.82rem;color:var(--muted);margin-top:.8rem;text-align:center}
 
 footer{background:var(--indigo-deep);color:rgba(255,255,255,.7);padding:56px 0 34px;font-size:.92rem}
@@ -290,6 +313,30 @@ footer .brand{color:#fff}
 footer nav{display:flex;flex-wrap:wrap;gap:22px}
 footer nav a:hover{color:#fff}
 footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:24px;font-size:.84rem}
+
+
+/* ── a little life ── */
+.progress-bar{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--gold),#E9C16A);transform:scaleX(0);transform-origin:left;z-index:90;pointer-events:none}
+.motes{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.motes i{position:absolute;bottom:-20px;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle,rgba(244,230,196,.95),rgba(201,150,43,0) 70%);animation:mote linear infinite;opacity:0}
+@keyframes mote{0%{transform:translate(0,0);opacity:0}10%{opacity:.9}90%{opacity:.6}100%{transform:translate(var(--dx,20px),-105vh);opacity:0}}
+.btn-gold{position:relative;overflow:hidden}
+.btn-gold::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s ease}
+.btn-gold:hover::after{left:130%}
+.hero .btn-gold{animation:glow 3.2s ease-in-out 2.2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 12px 30px -10px rgba(201,150,43,.8)}50%{box-shadow:0 12px 44px -6px rgba(201,150,43,1)}}
+.js .rv .label::before{width:0;transition:width .9s cubic-bezier(.2,.8,.2,1) .35s}
+.js .rv.in .label::before{width:28px}
+.js .rv .point{opacity:0;transform:translateX(24px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in .point{opacity:1;transform:none}
+.js .rv.in .point:nth-child(1){transition-delay:.35s}.js .rv.in .point:nth-child(2){transition-delay:.5s}.js .rv.in .point:nth-child(3){transition-delay:.65s}
+.collage .small img,.person .who img{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.collage .small:hover img{transform:scale(1.08)}
+.person:hover .who img{transform:scale(1.08) rotate(-3deg)}
+.time .ic{transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.time:hover .ic{transform:translateY(-4px) rotate(-6deg)}
+.portrait .frame img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.portrait:hover .frame img{transform:scale(1.04)}
 
 /* ── reveal ── */
 .js .rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
@@ -304,13 +351,26 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
   .hero h1 .w span,.in-1,.in-2,.in-3,.in-4,.hero .crest{transform:none;opacity:1}
   .js .rv{opacity:1;transform:none}
   .year .fill{width:100%}
+  .motes,.progress-bar{display:none}
+  .js .rv .point{opacity:1;transform:none}
+  .js .rv .label::before{width:28px}
 }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Church","name":"God's City Kingdom Centre","slogan":"A people known for their God",
+ "address":{"@type":"PostalAddress","streetAddress":"Ngwenya Industrial Site, opposite Old Natcal Engineering","addressLocality":"Ngwenya","addressCountry":"SZ"},
+ "geo":{"@type":"GeoCoordinates","latitude":-26.223152,"longitude":31.007147},
+ "telephone":"+268 7847 3045","email":"info.godscityk@gmail.com",
+ "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"16:00"}],
+ "event":[{"@type":"Event","name":"Sunday worship","eventSchedule":{"@type":"Schedule","byDay":"https://schema.org/Sunday","startTime":"10:30"}},
+          {"@type":"Event","name":"Prayer and mid-week service","eventSchedule":{"@type":"Schedule","byDay":"https://schema.org/Thursday","startTime":"17:30","endTime":"20:00"}}]}
+</script>
 </head>
 <body>
 <script>document.body.classList.add('js')</script>
+<div class="progress-bar" id="progress"></div>
 
-<div class="radio"><span class="dot"></span>Listen to <b>The Table of the Finishing Man</b> on Voice of God, 95, 97 &amp; 101 MHz</div>
+<div class="radio"><span class="dot"></span><b>The Table of the Finishing Man</b>, weekly on Voice of God 95, 97 &amp; 101 MHz · <a href="https://zeno.fm/radio/grace-portal-fm/" target="_blank" rel="noopener">Or listen online to Grace Portal FM →</a></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
@@ -340,6 +400,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
 </div>
 
 <section class="hero" id="top">
+  <div class="motes" id="motes" aria-hidden="true"></div>
   <div class="hero-bg" role="img" aria-label="The congregation of God's City Kingdom Centre in worship"></div>
   <div class="wrap">
     <img class="crest" src="images/logo.png" alt="" width="168" height="220">
@@ -350,7 +411,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
       <a class="btn btn-gold" href="#visit">Plan your visit
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       <a class="btn btn-glass" href="https://zeno.fm/radio/grace-portal-fm/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Listen live</a>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Grace Portal FM</a>
     </div>
     <div class="verse in-4">"You are the light of the world. A city that is set on a hill cannot be hidden."<cite>Matthew 5:14</cite></div>
   </div>
@@ -484,17 +545,17 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
   <div class="wrap">
     <div class="rv">
       <span class="label">Word Centres</span>
-      <h2>Find a church near you</h2>
-      <p class="lede">God's City meets in seven places across Eswatini. Every Word Centre has worship, teaching and prayer, and Sunday service starts at 10:30 AM everywhere.</p>
+      <h2>One church, seven places</h2>
+      <p class="lede">Our main church in Ngwenya and six Word Centres across Eswatini. Each one has worship, teaching and prayer, and Sunday service starts at 10:30 AM everywhere. Find the one nearest you.</p>
     </div>
     <div class="cgrid">
-      <div class="centre main rv"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M10 21v-5h4v5"/></svg></span><b>Ngwenya</b><span>Main church, Ngwenya Industrial Site</span><small>Sunday 10:30 AM</small></div>
-      <div class="centre rv" data-d="1"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Mankayane</b><span>Ekuncobeni Word Centre</span><small>Sunday 10:30 AM</small></div>
-      <div class="centre rv" data-d="2"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Esiteki</b><span>Enaleni Word Centre</span><small>Sunday 10:30 AM</small></div>
-      <div class="centre rv" data-d="3"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Bhunya</b><span>Intfonga Word Centre</span><small>Sunday 10:30 AM</small></div>
-      <div class="centre rv"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Macetjeni</b><span>Esibusisweni Word Centre</span><small>Sunday 10:30 AM</small></div>
-      <div class="centre rv" data-d="1"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Luve</b><span>Ekuphakameni Word Centre</span><small>Sunday 10:30 AM</small></div>
-      <div class="centre rv" data-d="2"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Ngwenya</b><span>Enkwalini Word Centre</span><small>Sunday 10:30 AM</small></div>
+      <a class="centre main rv" href="https://www.google.com/maps/dir/?api=1&amp;destination=-26.223152,31.007147" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M10 21v-5h4v5"/></svg></span><b>Ngwenya</b><span>Main church, Ngwenya Industrial Site</span><small>Sunday 10:30 AM</small><em class="go">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
+      <a class="centre rv" data-d="1" href="https://www.google.com/maps/search/?api=1&amp;query=Mankayane,+Eswatini" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Mankayane</b><span>Ekuncobeni Word Centre</span><small>Sunday 10:30 AM</small><em class="go">Mankayane on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
+      <a class="centre rv" data-d="2" href="https://www.google.com/maps/search/?api=1&amp;query=Esiteki,+Eswatini" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Esiteki</b><span>Enaleni Word Centre</span><small>Sunday 10:30 AM</small><em class="go">Esiteki on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
+      <a class="centre rv" data-d="3" href="https://www.google.com/maps/search/?api=1&amp;query=Bhunya,+Eswatini" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Bhunya</b><span>Intfonga Word Centre</span><small>Sunday 10:30 AM</small><em class="go">Bhunya on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
+      <a class="centre rv" href="https://www.google.com/maps/search/?api=1&amp;query=Macetjeni,+Eswatini" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Macetjeni</b><span>Esibusisweni Word Centre</span><small>Sunday 10:30 AM</small><em class="go">Macetjeni on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
+      <a class="centre rv" data-d="1" href="https://www.google.com/maps/search/?api=1&amp;query=Luve,+Eswatini" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Luve</b><span>Ekuphakameni Word Centre</span><small>Sunday 10:30 AM</small><em class="go">Luve on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
+      <a class="centre rv" data-d="2" href="https://www.google.com/maps/search/?api=1&amp;query=Ngwenya,+Eswatini" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>Ngwenya</b><span>Enkwalini Word Centre</span><small>Sunday 10:30 AM</small><em class="go">Ngwenya on the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></em></a>
       <div class="centre rv" data-d="3" style="display:flex;flex-direction:column;justify-content:center"><b style="font-size:1.15rem">Not sure which is closest?</b><span style="margin:.4rem 0 1rem">Call us and we'll point you to the nearest one.</span><a class="btn btn-gold" href="tel:+26878473045" style="align-self:flex-start;padding:.7rem 1.1rem;font-size:.86rem">Call +268 7847 3045</a></div>
     </div>
   </div>
@@ -540,7 +601,7 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
     </div>
     <div class="grid">
       <div class="panel rv l">
-        <iframe class="map" src="https://www.google.com/maps?q=-26.223152,31.007147&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to God's City Kingdom Centre" allowfullscreen></iframe>
+        <div class="mapbox"><div class="fallback"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Ngwenya Industrial Site<br><a href="https://www.google.com/maps/search/?api=1&amp;query=-26.223152,31.007147" target="_blank" rel="noopener">Open the map</a></div></div><iframe class="map" src="https://www.google.com/maps?q=-26.223152,31.007147&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to God's City Kingdom Centre" allowfullscreen></iframe></div>
         <div class="info" style="padding:10px 34px 34px">
           <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><small>Address</small>Ngwenya Industrial Site, opposite Old Natcal Engineering, Ngwenya</div></div>
           <div class="row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>Phone</small><a href="tel:+26878473045">+268 7847 3045</a></div></div>
@@ -556,18 +617,27 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
           <label>First name<input name="first" required autocomplete="given-name"></label>
           <label>Last name<input name="last" autocomplete="family-name"></label>
         </div>
-        <label>Phone or email (so we can reply)<input name="reply" required></label>
+        <div class="f2">
+          <label>Phone<input name="phone" type="tel" autocomplete="tel" placeholder="+268"></label>
+          <label>Email<input name="email" type="email" autocomplete="email"></label>
+        </div>
+        <div class="hint" id="replyHint">Give us a phone number or an email so we can reply.</div>
         <label>What is it about?
           <select name="reason" id="reason">
             <option>Visiting for the first time</option>
             <option>Prayer request</option>
             <option>Serving in the church</option>
+            <option>Pastoral support</option>
             <option>Partnership &amp; ministry</option>
             <option>General enquiry</option>
+            <option>Other</option>
           </select></label>
+        <label class="check" id="welcomeBox"><input type="checkbox" name="welcome"> <span>Yes, I'd like someone to welcome me when I arrive</span></label>
+        <label id="whenBox">Which Sunday are you planning to come?<input name="when" placeholder="For example, 7 December"></label>
         <label>Message<textarea name="message" required placeholder="How can we help?"></textarea></label>
         <button class="btn btn-gold" type="submit">Send message
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+        <div class="sent" id="sent"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div><h3>Almost there</h3><p>Your email app has opened with your message. Press send there, and we'll be in touch.</p></div>
         <div class="note">Or call us on <a href="tel:+26878473045"><b>+268 7847 3045</b></a></div>
       </form>
     </div>
@@ -614,11 +684,24 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
     targets.forEach(function(t){ io.observe(t); });
   }
 
+  // Light rising through the opening photo
+  if (!reduce) {
+    var motes = document.getElementById('motes');
+    for (var i = 0; i < 22; i++) {
+      var m = document.createElement('i'), size = 3 + Math.random() * 6;
+      m.style.cssText = 'left:' + (Math.random() * 100) + '%;width:' + size + 'px;height:' + size + 'px;animation-duration:' + (9 + Math.random() * 10) + 's;animation-delay:' + (-Math.random() * 18) + 's;--dx:' + (Math.random() * 80 - 40) + 'px';
+      motes.appendChild(m);
+    }
+  }
+  var bar = document.getElementById('progress');
+
   // Nav background and a gentle parallax on the Sunday photo
   var par = document.querySelector('[data-parallax]'), ticking = false;
   function frame(){
     ticking = false;
     nav.classList.toggle('solid', window.scrollY > 60);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
     if (par && !reduce) {
       var r = par.parentNode.getBoundingClientRect(), vh = window.innerHeight;
       if (r.bottom > 0 && r.top < vh) { var p = (r.top + r.height / 2 - vh / 2) / vh; par.style.transform = 'translateY(' + (-8 + p * 14).toFixed(2) + '%)'; }
@@ -627,16 +710,34 @@ footer .bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-betwee
   window.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(frame); } }, {passive:true});
   frame();
 
+  // The welcome question shows only for a first visit
+  var reasonSel = document.getElementById('reason');
+  function firstVisit(){ var on = reasonSel.value === 'Visiting for the first time'; document.getElementById('welcomeBox').style.display = on ? '' : 'none'; document.getElementById('whenBox').style.display = on ? '' : 'none'; }
+  reasonSel.addEventListener('change', firstVisit); firstVisit();
+
   // "I'd like to serve" picks the reason in the form
   document.querySelectorAll('[data-reason]').forEach(function(a){
-    a.addEventListener('click', function(){ document.getElementById('reason').value = a.dataset.reason; });
+    a.addEventListener('click', function(){ document.getElementById('reason').value = a.dataset.reason; firstVisit(); });
   });
 
   // The form opens the visitor's email app with the message filled in
   document.getElementById('contact').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target, name = (f.first.value + ' ' + f.last.value).trim();
-    var body = f.message.value + '\n\n' + name + '\n' + f.reply.value;
+    var hint = document.getElementById('replyHint');
+    if (!f.phone.value.trim() && !f.email.value.trim()) { hint.classList.add('bad'); f.phone.focus(); return; }
+    hint.classList.remove('bad');
+    var lines = [f.message.value, ''];
+    if (f.reason.value === 'Visiting for the first time') {
+      if (f.welcome.checked) lines.push('Please have someone welcome me when I arrive.');
+      if (f.when.value.trim()) lines.push('Planning to come: ' + f.when.value.trim());
+      lines.push('');
+    }
+    lines.push(name);
+    if (f.phone.value.trim()) lines.push('Phone: ' + f.phone.value.trim());
+    if (f.email.value.trim()) lines.push('Email: ' + f.email.value.trim());
+    var body = lines.join('\n');
+    document.getElementById('sent').classList.add('on');
     location.href = 'mailto:info.godscityk@gmail.com?subject=' + encodeURIComponent(f.reason.value + ' (from ' + name + ')') + '&body=' + encodeURIComponent(body);
   });
 })();
